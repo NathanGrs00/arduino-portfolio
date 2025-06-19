@@ -24,7 +24,8 @@ en dan opbouwen en testen, plus foto maken.
 - Ik heb 2 LED lampjes nodig.
 - Ik heb 2 resistors nodig van 220 Ohm.
 - Ik heb 1 drukknop nodig.
-- Ik heb 1 weerstand nodig van 10K Ohm.
+- Ik heb 1 resistor nodig van 10K Ohm.
 - Ik heb 7 draadjes nodig. (4 voor de min, 3 voor de plus)
 
 ## Bronnen
+https://docs.arduino.cc/built-in-examples/digital/Button/
