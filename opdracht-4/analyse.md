@@ -1,4 +1,5 @@
 # Opdracht 4
+## Opdrachtomschrijving
 Maak een sketch om 6 LED's aan te sturen afhankelijk van de hoekverdraaiing van de potmeter.  
 Eerst tinkeren!
 Je mag zelf de uitgangen kiezen waar de LED's op worden aangesloten.  

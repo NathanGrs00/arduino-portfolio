@@ -1,4 +1,5 @@
 # Opdracht 1
+## Opdrachtomschrijving
 Sluit 2 LED lampjes aan op poort 10 en 13.   
 Laat de LED's om en om knipperen.   
 Dit betekent dat als LED 1 aan staat, dat LED 2 uit moet staan.  

@@ -1,4 +1,5 @@
 # Opdracht 2
+## Opdrachtomschrijving
 Sluit 8 LED's aan op externe poorten.  
 Dit betekent dat er 8 LED's op het breadboard moeten worden aangesloten.  
 Laat de LED’s heen en weer lopen volgens de Knight Rider LED strip. (zie bronnen).
