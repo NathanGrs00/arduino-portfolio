@@ -15,7 +15,7 @@ en dan opbouwen en testen, plus foto maken.
 - Ik heb een BreadBoard nodig.
 - Ik heb 8 LED lampjes nodig.
 - Ik heb 8 resistors nodig van 220 Ohm.
-- Ik heb draadjes nodig.
+- Ik heb 17 draadjes nodig. (9 voor de min, 8 voor de plus)
 
 ## Bronnen
 http://bit.ly/ArduinoOpdracht3  
