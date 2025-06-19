@@ -4,6 +4,7 @@ Laat de LED's om en om knipperen.
 Dit betekent dat als LED 1 aan staat, dat LED 2 uit moet staan.  
 LED 1 moet 2 seconden uitstaan en 2 seconden aanstaan.  
 Tegelijk moet LED 2 het tegenovergestelde doen.  
+
 Maak eerst de code.  
 Dan tinkeren en testen, plus screenshots maken.  
 en dan opbouwen en testen, plus foto maken.  
@@ -12,8 +13,8 @@ en dan opbouwen en testen, plus foto maken.
 - Ik heb een Arduino Uno kit nodig.
 - Ik heb een BreadBoard nodig.
 - Ik heb 2 LED lampjes nodig.
-- Ik heb twee resistors nodig van 220 Ohm.
-- Ik heb draadjes nodig.
+- Ik heb 2 resistors nodig van 220 Ohm.
+- Ik heb 5 draadjes nodig. (3 voor de min, 2 voor de plus)
 
 ## Bronnen
 https://docs.arduino.cc/language-reference/en/variables/variable-scope-qualifiers/const/
