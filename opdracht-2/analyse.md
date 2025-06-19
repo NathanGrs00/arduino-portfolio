@@ -16,6 +16,8 @@ en dan opbouwen en testen, plus foto maken.
 - Ik heb 8 LED lampjes nodig.
 - Ik heb 8 resistors nodig van 220 Ohm.
 - Ik heb 17 draadjes nodig. (9 voor de min, 8 voor de plus)
+- Ik heb een USB kabel nodig, om de Arduino Uno aan te sluiten op de computer.
+- Ik heb een computer nodig, om de Arduino IDE te gebruiken.
 
 ## Bronnen
 http://bit.ly/ArduinoOpdracht3  

@@ -15,6 +15,8 @@ en dan opbouwen en testen, plus foto maken.
 - Ik heb 2 LED lampjes nodig.
 - Ik heb 2 resistors nodig van 220 Ohm.
 - Ik heb 5 draadjes nodig. (3 voor de min, 2 voor de plus)
+- Ik heb een USB kabel nodig, om de Arduino Uno aan te sluiten op de computer.
+- Ik heb een computer nodig, om de Arduino IDE te gebruiken.
 
 ## Bronnen
 https://docs.arduino.cc/language-reference/en/variables/variable-scope-qualifiers/const/

@@ -26,6 +26,8 @@ en dan opbouwen en testen, plus foto maken.
 - Ik heb 1 drukknop nodig.
 - Ik heb 1 resistor nodig van 10K Ohm.
 - Ik heb 7 draadjes nodig. (4 voor de min, 3 voor de plus)
+- Ik heb een USB kabel nodig, om de Arduino Uno aan te sluiten op de computer.
+- Ik heb een computer nodig, om de Arduino IDE te gebruiken.
 
 ## Bronnen
 https://docs.arduino.cc/built-in-examples/digital/Button/
