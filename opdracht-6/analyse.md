@@ -27,7 +27,7 @@ Omdat het signaal heen en weer gaat, moet de tijd gedeeld worden door 2.
 - Ik heb een BreadBoard nodig.
 - Ik heb 1 servomotor nodig.
 - Ik heb 1 ultrasoon zender/ontvanger nodig.
-- Ik heb draadjes nodig.
+- Ik heb 8 draadjes nodig. (3 voor de servo, 3 voor de ultrasoonzender en 2 voor de voeding van het breadboard.)
 - Ik heb een USB kabel nodig, om de Arduino Uno aan te sluiten op de computer.
 - Ik heb een computer nodig, om de Arduino IDE te gebruiken.
 

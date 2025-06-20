@@ -27,7 +27,7 @@ Verder heeft een servomotor 3 aansluitingen. 1 voor de voeding, 1 voor de ground
 - Ik heb 1 servomotor nodig.
 - Ik heb 2 drukknoppen nodig.
 - Ik heb 2 resistors nodig van 10K Ohm.
-- Ik heb draadjes nodig. 
+- Ik heb 9 draadjes nodig. (3 voor de servo, 4 voor de drukknoppen en 2 voor de voeding van het breadboard)
 - Ik heb een USB kabel nodig, om de Arduino Uno aan te sluiten op de computer.
 - Ik heb een computer nodig, om de Arduino IDE te gebruiken.
 

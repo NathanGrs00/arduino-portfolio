@@ -1,0 +1,76 @@
+// Voeg de servo library toe.
+#include <Servo.h>
+
+// Maak een Servo object aan. Dit object wordt gebruikt om de servo motor aan te sturen.
+Servo MyServo;
+// Definieer de pinnen voor de knoppen.
+int btnPin1 = 13;
+int btnPin2 = 8;
+
+// Definieer de duur voor de servo bewegingen in seconden.
+float duration1 = 3.0;
+float duration2 = 0.5;
+
+// Deze functie wordt één keer uitgevoerd bij het opstarten van de Arduino.
+void setup() {
+  // Koppel de servo motor aan pin 2.
+  MyServo.attach(2);
+  // Zet de servo motor in de beginpositie.
+  MyServo.write(0);
+  // Zet de knoppen als INPUT.
+  pinMode(btnPin1, INPUT);
+  pinMode(btnPin2, INPUT);
+}
+
+// Deze functie wordt continu uitgevoerd na de setup.
+void loop() {
+  // boolean variabelen om de status van de knoppen te controleren.
+  // De knoppen zijn LOW wanneer ze ingedrukt zijn.
+  bool btn1Pressed = digitalRead(btnPin1) == LOW;
+  bool btn2Pressed = digitalRead(btnPin2) == LOW;
+
+  //Als beide knoppen zijn ingedrukt, ga dan 3s heen en 0.5s terug.
+  if (btn1Pressed && btn2Pressed) {
+    buttonActionHold(duration1, duration2);
+    // Als alleen de eerste knop is ingedrukt, ga dan 3s heen en 3s terug.
+  } else if (btn1Pressed) {
+    buttonActionHold(duration1, duration1);
+    // Als alleen de tweede knop is ingedrukt, ga dan 0.5s heen en 0.5s terug.
+  } else if (btn2Pressed) {
+    buttonActionHold(duration2, duration2);
+  }
+
+  // Een korte delay om te voorkomen dat de loop te snel draait.
+  delay(50);
+}
+
+// Een functie die de servo motor laat bewegen op basis van het aantal seconden.
+void buttonActionHold(float forwardDuration, float backDuration) {
+  // Maak een boolean variabele om te controleren of de knoppen nog steeds ingedrukt zijn.
+  bool stillPressed;
+  // Beweeg de servo motor van 0 naar 120 graden in stappen van 1 graad.
+  for (int pos = 0; pos <= 120; pos++) {
+    // Beweeg de servo motor naar de huidige positie van de iteratie.
+    MyServo.write(pos);
+    // Wacht een tijd na elke beweging.
+    // De tijd is * 1000 gedaan om naar milliseconden om te rekenen,
+    // dan delen door 120 omdat de opdracht vraagt om een max graad van 120,
+    delay((forwardDuration * 1000.0) / 120);
+
+    // Controleer elke iteratie of de knoppen nog steeds ingedrukt zijn.
+    stillPressed = digitalRead(btnPin1) == LOW || digitalRead(btnPin2) == LOW;
+    // Als geen van de knoppen meer ingedrukt is, stop dan met bewegen.
+    if (!stillPressed) {
+      // Break eindigt de loop.
+      break;
+    }
+  }
+
+  // For loop om de servo terug te bewegen vanaf de huidige positie naar 0 graden.
+  for (int pos = MyServo.read(); pos >= 0; pos--) {
+    // Beweeg de servo motor naar de huidige positie van de iteratie.
+    MyServo.write(pos);
+    // Zelfde formule, maar dan voor de terug duratie.
+    delay((backDuration * 1000.0) / 120);
+  }
+}
