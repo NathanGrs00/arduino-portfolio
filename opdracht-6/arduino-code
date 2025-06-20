@@ -1,0 +1,45 @@
+#include <Servo.h>
+Servo MyServo;
+const int pingPin = 3;
+
+void setup(){
+  MyServo.attach(5);
+  MyServo.write(0);
+}
+
+void loop(){
+  float distance = pingSensor();
+  turnServo(distance);
+}
+
+float pingSensor() {
+  long duration, cm;
+  pinMode(pingPin, OUTPUT);
+  digitalWrite(pingPin, LOW);
+  delayMicroseconds(2);
+  digitalWrite(pingPin, HIGH);
+  delayMicroseconds(5);
+  digitalWrite(pingPin, LOW);
+
+  pinMode(pingPin, INPUT);
+  duration = pulseIn(pingPin, HIGH);
+  cm = msToCm(duration);
+  return cm;
+}
+
+long msToCm(long microsecs) {
+  return microsecs / 29 / 2;
+}
+
+void turnServo(float cm) {
+  if (cm >= 4 && cm <= 10) {
+    int angle = map(cm, 10, 4, 0, 180);
+    MyServo.write(angle);
+  }
+  else if (cm < 4) {
+  	MyServo.write(180);
+  }
+  else {
+    MyServo.write(0);
+  }
+}
