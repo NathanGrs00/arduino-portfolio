@@ -1,44 +1,75 @@
+// Het toevoegen van de Servo library.
 #include <Servo.h>
+// Het aanmaken van een Servo object.
 Servo MyServo;
+// Dit is de variabele voor de ping sensor pin.
 const int pingPin = 3;
 
 void setup(){
+  // Koppel de servomotor aan pin 5.
   MyServo.attach(5);
+  // Zet de motor in de beginpositie.
   MyServo.write(0);
 }
 
+// Dit wordt constant uitgevoerd.
 void loop(){
+  // Roep pingSensor functie aan en sla de waarde op in distance.
   float distance = pingSensor();
+  // Stuur deze waarde naar de turnServo functie.
   turnServo(distance);
 }
 
+// Ping sensor geeft een float terug.
 float pingSensor() {
+  // Maak een variabele voor de duur en cm.
   long duration, cm;
+  // Zet de sensor als OUTPUT, zodat deze een ping kan sturen.
   pinMode(pingPin, OUTPUT);
+  // Zet hem eerst op LOW, zodat de ping sensor klaar is voor een nieuwe ping.
   digitalWrite(pingPin, LOW);
+  // Wacht even om zeker te zijn dat de ping sensor klaar is.
   delayMicroseconds(2);
+  // Zet de ping sensor op HIGH, dit is het moment dat de ping wordt verstuurd.
   digitalWrite(pingPin, HIGH);
+  // Wacht 5 microseconden om de ping te versturen.
   delayMicroseconds(5);
+  // Zet de ping sensor weer op LOW, zodat hij klaar is voor het meten van de echo.
   digitalWrite(pingPin, LOW);
 
+  // Zet de ping sensor weer op INPUT, zodat hij de echo kan meten.
   pinMode(pingPin, INPUT);
+  // pulseIn wacht tot de ping sensor een HIGH signaal ontvangt en meet de tijd dat dit signaal aan staat.
   duration = pulseIn(pingPin, HIGH);
+  // Zet de tijd om naar centimeters met een berekenfunctie.
   cm = msToCm(duration);
+  // Geef de waarde van cm terug.
   return cm;
 }
 
+// Functie om microseconden om te zetten naar centimeters.
 long msToCm(long microsecs) {
+  // Geef de waarde terug in centimeters.
+  // De berekening is gebaseerd op de snelheid van geluid,
+  // die ongeveer 343 meter per seconde is, of 29 microseconden per centimeter.
+  // Delen door 2 om de heen- en terugreis van de ping te compenseren.
   return microsecs / 29 / 2;
 }
 
+// Functie om de servo te draaien op basis van de afstand in centimeters.
 void turnServo(float cm) {
+  // Controleer of de afstand binnen het bereik van 4 tot 10 cm ligt.
   if (cm >= 4 && cm <= 10) {
+    // Map de afstand naar een hoek tussen 0 en 180 graden.
     int angle = map(cm, 10, 4, 0, 180);
+    // Zet de servo naar de berekende hoek.
     MyServo.write(angle);
   }
+  // Als de afstand kleiner is dan 4 cm, draai de servo naar 180 graden.
   else if (cm < 4) {
   	MyServo.write(180);
   }
+  // Als de afstand groter is dan 10 cm, draai de servo naar 0 graden.
   else {
     MyServo.write(0);
   }
