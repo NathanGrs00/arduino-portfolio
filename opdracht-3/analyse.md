@@ -1,4 +1,5 @@
 # Opdracht 3
+![img.png](../afbeeldingen/brightspaceopdracht3.png)
 ## Opdrachtomschrijving
 Sluit een LED aan op poort 5 en een andere LED op poort 11.  
 Sluit een knop aan op poort 8.  

@@ -1,4 +1,5 @@
 # Opdracht 2
+![img.png](../afbeeldingen/brightspaceopdracht2.png)
 ## Opdrachtomschrijving
 Sluit 8 LED's aan op externe poorten.  
 Dit betekent dat er 8 LED's op het breadboard moeten worden aangesloten.  

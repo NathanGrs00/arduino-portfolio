@@ -1,4 +1,5 @@
 # Opdracht 1
+![img.png](../afbeeldingen/brightspaceopdracht1.png)
 ## Opdrachtomschrijving
 Sluit 2 LED lampjes aan op poort 10 en 13.   
 Laat de LED's om en om knipperen.   

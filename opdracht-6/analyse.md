@@ -1,4 +1,5 @@
 # Opdracht 6
+![img.png](../afbeeldingen/brightspaceopdracht6.png)
 ## Opdrachtomschrijving
 Maak een schakeling en een sketch waarbij:  
 - Een servomotor in rust op 0 graden staat.  

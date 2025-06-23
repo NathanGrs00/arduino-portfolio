@@ -1,4 +1,5 @@
 # Opdracht 4
+![img.png](../afbeeldingen/brightspaceopdracht4.png)
 ## Opdrachtomschrijving
 Maak een sketch om 6 LED's aan te sturen afhankelijk van de hoekverdraaiing van de potmeter.  
 Eerst tinkeren!

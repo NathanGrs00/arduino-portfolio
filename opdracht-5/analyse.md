@@ -1,4 +1,5 @@
 # Opdracht 5
+![img.png](../afbeeldingen/brightspaceopdracht5.png)
 ## Opdrachtomschrijving
 Op de arduino zijn 2 drukknoppen aangesloten.  
 Zolang op drukknop 1 wordt gedrukt, draait een servomotor van 0 graden naar 120 graden in 3 seconden.  
