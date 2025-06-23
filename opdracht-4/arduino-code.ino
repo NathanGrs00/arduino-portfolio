@@ -1,6 +1,6 @@
 // Analoge pin voor de potmeter.
 const int potPin = A5;
-// Waarde van de potknop.
+// Waarde van de potmeter.
 int potWaarde = 0;
 // Array met de pin nummers van de Ledlampjes.
 int pinLijst[] = {13, 12, 11, 10, 9, 8};
@@ -13,7 +13,7 @@ const int pinAantal = sizeof(pinLijst) / sizeof(pinLijst[0]);
 void setup() {
   // For loop om door het aantal LED lampjes te gaan.
   for (int x = 0; x < pinAantal; x++){
-    // Voor elk lampje, roep setupLeds() aan. Geef de index waarde mee.
+    // Voor elk lampje, roep stelLedsIn() aan. Geef de huidige led mee.
     stelLedsIn(x);
   }
 }
@@ -22,17 +22,25 @@ void setup() {
 void loop(){
   // Waarde van de potmeter lezen.
   potWaarde = analogRead(potPin);
-  // Roep deze functie aan en geef de waarde mee.
+  // Roep deze functie aan om mogelijk de leds te veranderen en geef de potWaarde mee.
   veranderLeds(potWaarde);
 }
 
-// Functie om de lampjes te initialiseren.
+/* Functie om de lampjes te initialiseren.
+
+@param1 positie = De positie van de lamp in de pinLijst array.
+*/
 void stelLedsIn(int positie){
   // Zorgt dat de pins een output worden bij elk lampje.
   pinMode(pinLijst[positie], OUTPUT);
 }
 
-// Functie om lampjes te veranderen.
+/*
+Functie om lampjes te veranderen.
+
+@param1 potmeterWaarde = De waarde van de potmeter die we uitlezen.
+@author: https://www.arduino.cc/en/Tutorial/BuiltInExamples/BarGraph/
+*/
 void veranderLeds(int potmeterWaarde){
   // Verdeel eerst de maximale waarde van de potmeter over het aantal lampjes.
   // Dan word de huidige waarde van de potmeter gedeeld door de waarde van elk vlak.

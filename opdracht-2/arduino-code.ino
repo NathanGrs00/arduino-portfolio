@@ -4,8 +4,9 @@ int pinLijst[] = {13, 11, 10, 8, 7, 5, 3, 0};
 // Maar sizeof(pinLijst) geeft het aantal bytes terug, niet het aantal elementen.
 // Om het aantal elementen te berekenen, delen we de totale grootte van de array
 // door de grootte van een enkel element in de array.
+// @author: https://www.w3schools.com/cpp/cpp_arrays_size.asp
 int aantalPins = sizeof(pinLijst) / sizeof(pinLijst[0]);
-// De delay tussen de pulsen in milliseconden.
+// De vertraging tussen de pulsen in milliseconden.
 int vertragingMs = 50;
 
 // Setup functie wordt één keer uitgevoerd bij het opstarten van de Arduino.
@@ -35,7 +36,7 @@ void linksNaarRechts() {
 
 // Functie om de LED's van rechts naar links te laten knipperen.
 void rechtsNaarLinks() {
-    // Loop door de pinnen in de pinLijst, maar in omgekeerde volgorde.
+  // Loop door de pinnen in de pinLijst, maar in omgekeerde volgorde.
   for (int x = aantalPins -1; x >= 0; x--) {
     // Roep de pulse functie aan voor elke pin in de array.
     pulse(pinLijst[x]);
@@ -43,11 +44,13 @@ void rechtsNaarLinks() {
 }
 
 // Functie om een pin in te stellen als output.
+// @param1 pin = De pin die gebruikt wordt om de pinMode aan te geven.
 void pinSetup(int pin) {
   pinMode(pin, OUTPUT);
 }
 
-// Functie om een puls te geven op een pin.
+// Functie om een led uit en aan te zetten.
+// @param1 pin = De pin die gebruikt wordt om de led aan te sturen.
 void pulse(int pin){
   // HIGH betekent dat de pin aan staat.
   digitalWrite(pin, HIGH);

@@ -14,6 +14,7 @@ float tijd2 = 0.5;
 // Deze functie wordt één keer uitgevoerd bij het opstarten van de Arduino.
 void setup() {
   // Koppel de servo motor aan pin 3.
+  // @author: https://www.youtube.com/watch?v=v6NsAZ_srsM&ab_channel=Tronicslk
   MijnServo.attach(3);
   // Zet de knoppen als INPUT.
   pinMode(knopPin1, INPUT);
@@ -27,7 +28,7 @@ void loop() {
   bool knop1Ingedrukt = digitalRead(knopPin1) == LOW;
   bool knop2Ingedrukt = digitalRead(knopPin2) == LOW;
 
-  //Als beide knoppen zijn ingedrukt, ga dan 3s heen en 0.5s terug.
+  // Als beide knoppen zijn ingedrukt, ga dan 3s heen en 0.5s terug.
   if (knop1Ingedrukt && knop2Ingedrukt) {
     actieKnopIngedrukt(tijd1, tijd2, true);
     // Als alleen de eerste knop is ingedrukt, ga dan 3s heen en 3s terug.
@@ -42,7 +43,12 @@ void loop() {
   delay(50);
 }
 
-// Een functie die de servo motor laat bewegen op basis van het aantal seconden.
+/*
+Een functie die de servo motor laat bewegen op basis van het aantal seconden.
+@param1 heenwegTijd = De tijd in seconden die de servo nodig heeft om naar de eindpositie te gaan.
+@param2 terugwegTijd = De tijd in seconden die de servo nodig heeft om terug te gaan naar de beginpositie.
+@param3 beideKnoppen = Een boolean die aangeeft of beide knoppen zijn ingedrukt.
+*/
 void actieKnopIngedrukt(float heenwegTijd, float terugwegTijd, bool beideKnoppen) {
   // Zet de servo motor in de beginpositie.
   MijnServo.write(0);
@@ -54,7 +60,8 @@ void actieKnopIngedrukt(float heenwegTijd, float terugwegTijd, bool beideKnoppen
     MijnServo.write(pos);
     // Wacht een tijd na elke beweging.
     // De tijd is * 1000 gedaan om naar milliseconden om te rekenen,
-    // dan delen door 120 omdat de opdracht vraagt om een max graad van 120,
+    // dan delen door 120 omdat de opdracht vraagt om een max graad van 120.
+    // Uiteindelijk zorgt dit ervoor dat de servo motor in de juiste tijd beweegt naar de 120 graden.
     delay((heenwegTijd * 1000.0) / 120);
 
     // Controleer elke iteratie of de knoppen nog steeds ingedrukt zijn.
@@ -67,12 +74,13 @@ void actieKnopIngedrukt(float heenwegTijd, float terugwegTijd, bool beideKnoppen
 
     // Als beide knoppen zijn ingedrukt en de positie 120 graden is,
     if (beideKnoppen && pos == 120) {
-      // Pauseer de beweging voor 5 seconden.
+      // Pauseer de beweging voor 5 seconden. Dit was een vereiste in de opdracht.
       delay(5000);
     }
   }
 
   // For loop om de servo terug te bewegen vanaf de huidige positie naar 0 graden.
+  // Er is hier gekozen voor MijnServo.read, niet pos = 120, omdat de servo motor halverwege kan stoppen.
   for (int pos = MijnServo.read(); pos >= 0; pos--) {
     // Beweeg de servo motor naar de huidige positie van de iteratie.
     MijnServo.write(pos);

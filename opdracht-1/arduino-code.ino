@@ -1,4 +1,6 @@
 // Globale variabelen voor de pinnen.
+// Hierbij is opgezocht hoe je een variabele in C++ kan declareren.
+// @author: https://docs.arduino.cc/language-reference/en/variables/variable-scope-qualifiers/const/
 const int pin1 = 10;
 const int pin2 = 13;
 
@@ -16,10 +18,13 @@ void loop() {
   knipper(pin1, pin2, 2000);
 }
 
-// Functie om te knipperen
-// @param1 pin1 = Integer voor de eerste pin op de Arduino kit.
-// @param2 pin2 = Integer voor de tweede pin op de Arduino kit.
-// @paramm3 delayMs = Vertraging in milliseconde.
+/*
+Functie om te knipperen
+
+@param1 pin1 = Integer voor de eerste pin op de Arduino kit.
+@param2 pin2 = Integer voor de tweede pin op de Arduino kit.
+@paramm3 vertragingMs = Vertraging in milliseconde.
+*/
 void knipper(int pin1, int pin2, int vertragingMs) {
   digitalWrite(pin1, HIGH);
   digitalWrite(pin2, LOW);
