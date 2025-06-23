@@ -4,8 +4,8 @@
 // Maak een Servo object aan. Dit object wordt gebruikt om de servo motor aan te sturen.
 Servo MyServo;
 // Definieer de pinnen voor de knoppen.
-int btnPin1 = 13;
-int btnPin2 = 8;
+int btnPin1 = 11;
+int btnPin2 = 10;
 
 // Definieer de duur voor de servo bewegingen in seconden.
 float duration1 = 3.0;
@@ -13,10 +13,8 @@ float duration2 = 0.5;
 
 // Deze functie wordt één keer uitgevoerd bij het opstarten van de Arduino.
 void setup() {
-  // Koppel de servo motor aan pin 2.
-  MyServo.attach(2);
-  // Zet de servo motor in de beginpositie.
-  MyServo.write(0);
+  // Koppel de servo motor aan pin 3.
+  MyServo.attach(3);
   // Zet de knoppen als INPUT.
   pinMode(btnPin1, INPUT);
   pinMode(btnPin2, INPUT);
@@ -31,13 +29,13 @@ void loop() {
 
   //Als beide knoppen zijn ingedrukt, ga dan 3s heen en 0.5s terug.
   if (btn1Pressed && btn2Pressed) {
-    buttonActionHold(duration1, duration2);
+    buttonActionHold(duration1, duration2, true);
     // Als alleen de eerste knop is ingedrukt, ga dan 3s heen en 3s terug.
   } else if (btn1Pressed) {
-    buttonActionHold(duration1, duration1);
+    buttonActionHold(duration1, duration1, false);
     // Als alleen de tweede knop is ingedrukt, ga dan 0.5s heen en 0.5s terug.
   } else if (btn2Pressed) {
-    buttonActionHold(duration2, duration2);
+    buttonActionHold(duration2, duration2, false);
   }
 
   // Een korte delay om te voorkomen dat de loop te snel draait.
@@ -45,7 +43,9 @@ void loop() {
 }
 
 // Een functie die de servo motor laat bewegen op basis van het aantal seconden.
-void buttonActionHold(float forwardDuration, float backDuration) {
+void buttonActionHold(float forwardDuration, float backDuration, bool bothButtons) {
+  // Zet de servo motor in de beginpositie.
+  MyServo.write(0);
   // Maak een boolean variabele om te controleren of de knoppen nog steeds ingedrukt zijn.
   bool stillPressed;
   // Beweeg de servo motor van 0 naar 120 graden in stappen van 1 graad.
@@ -63,6 +63,10 @@ void buttonActionHold(float forwardDuration, float backDuration) {
     if (!stillPressed) {
       // Break eindigt de loop.
       break;
+    }
+
+    if (bothButtons && pos == 120) {
+      delay(5000);
     }
   }
 
