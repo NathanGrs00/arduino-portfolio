@@ -2,14 +2,17 @@
 #include <Servo.h>
 // Het aanmaken van een Servo object.
 Servo MyServo;
-// Dit is de variabele voor de ping sensor pin.
-const int pingPin = 3;
+// Dit zijn de variabelen voor de trigger en echo pin. Beide worden gebruikt door de ultrasoon sensor.
+const int trigPin = 9;
+const int echoPin = 10;
 
 void setup(){
   // Koppel de servomotor aan pin 5.
   MyServo.attach(5);
   // Zet de motor in de beginpositie.
   MyServo.write(0);
+  pinMode(trigPin, OUTPUT);
+  pinMode(echoPin, INPUT);
 }
 
 // Dit wordt constant uitgevoerd.
@@ -24,23 +27,19 @@ void loop(){
 float pingSensor() {
   // Maak een variabele voor de duur en cm.
   long duration, cm;
-  // Zet de sensor als OUTPUT, zodat deze een ping kan sturen.
-  pinMode(pingPin, OUTPUT);
   // Zet hem eerst op LOW, zodat de ping sensor klaar is voor een nieuwe ping.
-  digitalWrite(pingPin, LOW);
+  digitalWrite(trigPin, LOW);
   // Wacht even om zeker te zijn dat de ping sensor klaar is.
   delayMicroseconds(2);
   // Zet de ping sensor op HIGH, dit is het moment dat de ping wordt verstuurd.
-  digitalWrite(pingPin, HIGH);
+  digitalWrite(trigPin, HIGH);
   // Wacht 5 microseconden om de ping te versturen.
   delayMicroseconds(5);
   // Zet de ping sensor weer op LOW, zodat hij klaar is voor het meten van de echo.
-  digitalWrite(pingPin, LOW);
+  digitalWrite(trigPin, LOW);
 
-  // Zet de ping sensor weer op INPUT, zodat hij de echo kan meten.
-  pinMode(pingPin, INPUT);
   // pulseIn wacht tot de ping sensor een HIGH signaal ontvangt en meet de tijd dat dit signaal aan staat.
-  duration = pulseIn(pingPin, HIGH);
+  duration = pulseIn(echoPin, HIGH);
   // Zet de tijd om naar centimeters met een berekenfunctie.
   cm = msToCm(duration);
   // Geef de waarde van cm terug.

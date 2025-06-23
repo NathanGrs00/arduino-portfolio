@@ -22,14 +22,19 @@ cm = ms / 29 / 2
 De snelheid van geluid is 340 m/s of 29 ms/cm.  
 Omdat het signaal heen en weer gaat, moet de tijd gedeeld worden door 2.
 
+Tijdens het uitvoeren van de proef met de Arduino, kwam ik erachter dat we de ultrasoonsensor hebben met 4 pinnen, niet met 3.  
+Hierdoor moest ik wat extra informatie opzoeken over deze andere sensor. Het enige verschil is dat er geen pingPin is, maar een triggerPin en een echoPin.  
+Hierdoor hoef ik ook niet de INPUT of OUTPUT te veranderen van de pin, maar kan je dus de twee pinnen los van elkaar gebruiken.
+
 ## Verzameling
 - Ik heb een Arduino Uno kit nodig.
 - Ik heb een BreadBoard nodig.
 - Ik heb 1 servomotor nodig.
 - Ik heb 1 ultrasoon zender/ontvanger nodig.
-- Ik heb 8 draadjes nodig. (3 voor de servo, 3 voor de ultrasoonzender en 2 voor de voeding van het breadboard.)
+- Ik heb 9 draadjes nodig. (3 voor de servo, 4 voor de ultrasoonzender en 2 voor de voeding van het breadboard.)
 - Ik heb een USB kabel nodig, om de Arduino Uno aan te sluiten op de computer.
 - Ik heb een computer nodig, om de Arduino IDE te gebruiken.
 
 ## Bronnen
 https://docs.arduino.cc/built-in-examples/sensors/Ping/
+https://projecthub.arduino.cc/Isaac100/getting-started-with-the-hc-sr04-ultrasonic-sensor-7cabe1
