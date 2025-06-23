@@ -20,11 +20,11 @@ void loop() {
 // @param1 pin1 = Integer voor de eerste pin op de Arduino kit.
 // @param2 pin2 = Integer voor de tweede pin op de Arduino kit.
 // @paramm3 delayMs = Vertraging in milliseconde.
-void knipper(int pin1, int pin2, int delayMs) {
+void knipper(int pin1, int pin2, int vertragingMs) {
   digitalWrite(pin1, HIGH);
   digitalWrite(pin2, LOW);
-  delay(delayMs);
+  delay(vertragingMs);
   digitalWrite(pin1, LOW);
   digitalWrite(pin2, HIGH);
-  delay(delayMs);
+  delay(vertragingMs);
 }

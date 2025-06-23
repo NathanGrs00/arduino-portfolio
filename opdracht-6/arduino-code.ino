@@ -1,32 +1,32 @@
 // Het toevoegen van de Servo library.
 #include <Servo.h>
 // Het aanmaken van een Servo object.
-Servo MyServo;
+Servo MijnServo;
 // Dit zijn de variabelen voor de trigger en echo pin. Beide worden gebruikt door de ultrasoon sensor.
 const int trigPin = 9;
 const int echoPin = 10;
 
 void setup(){
   // Koppel de servomotor aan pin 5.
-  MyServo.attach(5);
+  MijnServo.attach(5);
   // Zet de motor in de beginpositie.
-  MyServo.write(0);
+  MijnServo.write(0);
   pinMode(trigPin, OUTPUT);
   pinMode(echoPin, INPUT);
 }
 
 // Dit wordt constant uitgevoerd.
 void loop(){
-  // Roep pingSensor functie aan en sla de waarde op in distance.
-  float distance = pingSensor();
+  // Roep pingSensor functie aan en sla de waarde op in afstand.
+  float afstand = pingSensor();
   // Stuur deze waarde naar de turnServo functie.
-  turnServo(distance);
+  draaiServo(afstand);
 }
 
 // Ping sensor geeft een float terug.
 float pingSensor() {
   // Maak een variabele voor de duur en cm.
-  long duration, cm;
+  long tijdMs, cm;
   // Zet hem eerst op LOW, zodat de ping sensor klaar is voor een nieuwe ping.
   digitalWrite(trigPin, LOW);
   // Wacht even om zeker te zijn dat de ping sensor klaar is.
@@ -39,9 +39,9 @@ float pingSensor() {
   digitalWrite(trigPin, LOW);
 
   // pulseIn wacht tot de ping sensor een HIGH signaal ontvangt en meet de tijd dat dit signaal aan staat.
-  duration = pulseIn(echoPin, HIGH);
+  tijdMs = pulseIn(echoPin, HIGH);
   // Zet de tijd om naar centimeters met een berekenfunctie.
-  cm = msToCm(duration);
+  cm = msToCm(tijdMs);
   // Geef de waarde van cm terug.
   return cm;
 }
@@ -56,20 +56,20 @@ long msToCm(long microsecs) {
 }
 
 // Functie om de servo te draaien op basis van de afstand in centimeters.
-void turnServo(float cm) {
+void draaiServo(float cm) {
   // Controleer of de afstand binnen het bereik van 4 tot 10 cm ligt.
   if (cm >= 4 && cm <= 10) {
     // Map de afstand naar een hoek tussen 0 en 180 graden.
-    int angle = map(cm, 10, 4, 0, 180);
+    int hoek = map(cm, 10, 4, 0, 180);
     // Zet de servo naar de berekende hoek.
-    MyServo.write(angle);
+    MijnServo.write(hoek);
   }
   // Als de afstand kleiner is dan 4 cm, draai de servo naar 180 graden.
   else if (cm < 4) {
-  	MyServo.write(180);
+  	MijnServo.write(180);
   }
   // Als de afstand groter is dan 10 cm, draai de servo naar 0 graden.
   else {
-    MyServo.write(0);
+    MijnServo.write(0);
   }
 }

@@ -1,54 +1,54 @@
 // Analoge pin voor de potmeter.
 const int potPin = A5;
 // Waarde van de potknop.
-int potValue = 0;
+int potWaarde = 0;
 // Array met de pin nummers van de Ledlampjes.
-int pinArray[] = {13, 12, 11, 10, 9, 8};
+int pinLijst[] = {13, 12, 11, 10, 9, 8};
 // Bereken de hoeveelheid ledjes we hebben.
 // sizeof geeft totale bytes terug, niet de elementen.
 // Daarom delen we de totale bytes door de hoeveelheid bytes van 1 element.
-const int pinAmount = sizeof(pinArray) / sizeof(pinArray[0]);
+const int pinAantal = sizeof(pinLijst) / sizeof(pinLijst[0]);
 
 // Deze code wordt 1 keer uitgevoerd na opstarten.
 void setup() {
   // For loop om door het aantal LED lampjes te gaan.
-  for (int x = 0; x < pinAmount; x++){
+  for (int x = 0; x < pinAantal; x++){
     // Voor elk lampje, roep setupLeds() aan. Geef de index waarde mee.
-    setupLeds(x);
+    stelLedsIn(x);
   }
 }
 
 // Blijft constant deze code loopen tijdens dat de arduino aan is.
 void loop(){
   // Waarde van de potmeter lezen.
-  potValue = analogRead(potPin);
+  potWaarde = analogRead(potPin);
   // Roep deze functie aan en geef de waarde mee.
-  changeLeds(potValue);
+  veranderLeds(potWaarde);
 }
 
 // Functie om de lampjes te initialiseren.
-void setupLeds(int index){
+void stelLedsIn(int positie){
   // Zorgt dat de pins een output worden bij elk lampje.
-  pinMode(pinArray[index], OUTPUT);
+  pinMode(pinLijst[positie], OUTPUT);
 }
 
 // Functie om lampjes te veranderen.
-void changeLeds(int value){
+void veranderLeds(int potmeterWaarde){
   // Verdeel eerst de maximale waarde van de potmeter over het aantal lampjes.
   // Dan word de huidige waarde van de potmeter gedeeld door de waarde van elk vlak.
   // Het resultaat is het aantal ledjes dat uitgezet moet worden.
-  int ledsToTurnOff = value / (1024 / pinAmount);
+  int aantalLedsUit = potmeterWaarde / (1024 / pinAantal);
 
   // For loop om door de hoeveelheid pins te gaan.
-  for (int x = 0; x < pinAmount; x++) {
+  for (int x = 0; x < pinAantal; x++) {
     // Voor elke LED, kijk of de indexwaarde van de LED
     // kleiner is dan de hoeveelheid LED's om uit te zetten.
-    if (x < ledsToTurnOff) {
+    if (x < aantalLedsUit) {
       // Als dit zo is, betekent dat deze LED uit moet.
-      digitalWrite(pinArray[x], LOW);
+      digitalWrite(pinLijst[x], LOW);
     } else {
       // Zo niet, dan blijft hij aan, of gaat hij dus weer terug aan.
-      digitalWrite(pinArray[x], HIGH);
+      digitalWrite(pinLijst[x], HIGH);
     }
   }
 }
